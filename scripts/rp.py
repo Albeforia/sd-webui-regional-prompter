@@ -205,7 +205,8 @@ class Script(modules.scripts.Script):
         self.lpactive = False
 
     def title(self):
-        return "Regional Prompter"
+        # Remove spaces so that this script matches API request
+        return "RegionalPrompter"
 
     def show(self, is_img2img):
         return modules.scripts.AlwaysVisible

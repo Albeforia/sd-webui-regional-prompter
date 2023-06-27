@@ -320,6 +320,22 @@ class Script(modules.scripts.Script):
 
     def process(self, p, active, debug, rp_selected_tab, mmode, xmode, pmode, aratios, bratios,
                 usebase, usecom, usencom, calcmode, nchangeand, lnter, lnur, threshold, polymask):
+        # HACK: All request args are string
+        def str2bool(v):
+            if v == 'True':
+                return True
+            else:
+                return False
+
+        active = str2bool(active)
+        debug = str2bool(debug)
+        usebase = str2bool(usebase)
+        usecom = str2bool(usecom)
+        usencom = str2bool(usencom)
+        nchangeand = str2bool(nchangeand)
+        if polymask == 'None':
+            polymask = None
+
         if not active:
             unloader(self,p)
             return p
